@@ -14,6 +14,7 @@ const io = new Server(httpServer, {
 const users = []
 /**************************************************************************/
 io.on("connection", (socket) => {
+    io.to(socket.id).emit('message', { message: "Hi, How can I help you?" });
     // a catch-all listener
     socket.onAny((event, ...args) => {
         console.log(event, args);
@@ -28,11 +29,11 @@ io.on("connection", (socket) => {
     })
     // on selecting the name
     socket.on("user", (user) => {
-        
+
     })
     // on selected user
     socket.on("onUser", (user) => {
-    
+
     })
 });
 /**************************************************************************/
